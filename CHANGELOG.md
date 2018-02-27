@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 0.0.1 - 2018-02-27
 ### Added
-- function validator to check function length
-- exception class to throw when function length exceed max length
-- directory and file parsers to parse files and functions respectively
-- README describes main motivation of package
+- comment validator to detect non-English comments
+- directory and file parsers to parse files and comments respectively
+- README to describe main motivation and use of package
+- CircleCI CI build for running tests

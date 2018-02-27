@@ -6,7 +6,7 @@ from pygments.lexers import get_lexer_for_filename
 from pygments.token import Token
 import pygments.util
 
-from .models import File, Function
+from .models import Comment, File, FileExtension
 
 
 class Directory:
@@ -41,20 +41,28 @@ class File:
         except pygments.util.ClassNotFound:
             self.lexer = None
 
-    def functions(self, path=None) -> Iterable[Function]:
-        """Yields Functions in this file."""
+    def is_supported(self) -> bool:
+        filename, ext = os.path.splitext(self.path)
+        return ext[1:] in FileExtension.SUPPORTED
+
+    def comments(self, path=None) -> Iterable[Comment]:
+        """Yields Comments in this file."""
         if not self.lexer:
             return
 
         with io.open(self.path, 'r', encoding='utf8') as f:
             try:
-                for TokenClass, value in self.lexer.get_tokens(f.read()):
-                    if TokenClass is Token.Name.Function:
-                        function_name = value
-                        # FIXME: determine function length
-                        yield Function(self.path, function_name, 0, 10)
+                for (idx, Class, value) in self.lexer.get_tokens_unprocessed(
+                        f.read()
+                ):
+                    if Class in (
+                            Token.Comment.Multiline,
+                            Token.Comment.Single
+                    ):
+                        yield Comment(self.path, value, idx)
+
             except UnicodeDecodeError:
                 pass
 
-    def __iter__(self) -> Iterable[Function]:
-        return self.functions()
+    def __iter__(self) -> Iterable[Comment]:
+        return self.comments()

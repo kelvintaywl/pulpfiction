@@ -6,10 +6,10 @@ import click
 from .service import evaluate
 
 
-@click.command()
+@click.command('')
 @click.option('--path', default='.', help='path to project or repository')
-@click.option('--max-length', default=50, help='Max line count for a function')
-def main(path: str, max_length: int):
+def main(path: str):
+    """Simple tool to detect non-English commments in a code base."""
     try:
         fpath = full_path(path)
     except AssertionError:
@@ -17,15 +17,13 @@ def main(path: str, max_length: int):
             'path specified needs to be a directory',
             param_hint=['--path']
         )
-
     try:
-        evaluate(fpath, max_length)
+        evaluate(fpath)
     except AssertionError:
-        # TODO: log
-        print('ERROR')
+        # TODO: error indicator
         sys.exit(1)
     else:
-        print('OK')
+        # TODO: success indicator
         sys.exit(0)
 
 

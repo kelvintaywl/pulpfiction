@@ -6,30 +6,31 @@ from setuptools import setup
 with io.open('README.md', 'rt', encoding='utf8') as f:
     readme = f.read()
 
-with io.open('tinyfn/__init__.py', 'rt', encoding='utf8') as f:
+with io.open('pulpfiction/__init__.py', 'rt', encoding='utf8') as f:
     version = re.search(r'__version__ = \'(.*?)\'', f.read()).group(1)
 
 setup(
-    name='tinyfn',
+    name='pulpfiction',
     version=version,
-    url='https://github.com/kelvintaywl/tinyfn',
+    url='https://github.com/kelvintaywl/pulpfiction',
     author='Kelvin Tay',
     author_email='kelvintaywl@gmail.com',
     maintainer='Kelvin Tay',
     maintainer_email='kelvintaywl@gmail.com',
-    description='A simple utility tool to evaluate function length',
+    description='A simple utility tool to detect non-English comments in code',
     long_description=readme,
-    packages=['tinyfn'],
+    packages=['pulpfiction'],
     include_package_data=True,
     zip_safe=False,
     platforms='any',
     install_requires=[
-        'pygments',
-        'click',
+        'pygments>=2.2.0',
+        'langdetect>=1.0.7',
+        'click>=6.7',
     ],
     extras_require={
-        'test': [
-            'flake8'
+        'dev': [
+            'flake8>=3.5.0'
         ]
     },
     classifiers=[
@@ -42,7 +43,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'tinyfn = tinyfn.cli:main',
+            'jules = pulpfiction.cli:main',
         ],
     },
 )
