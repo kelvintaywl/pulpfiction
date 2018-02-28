@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 0.3.0 - 2018-02-28
+### Fixed
+- ignore short text and TODO and FIXME comments
+
 ### Changed
 - README from Markdown to RST format
 

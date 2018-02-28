@@ -21,6 +21,9 @@ class Comment:
             return True
 
     def validate(self) -> None:
+        # ignore if text is too short; langdetect not reliable with short text
+        if len(self.comment.text) <= 15:
+            return
         try:
             guess = detect_langs(self.comment.text)[0]
         except (IndexError, LangDetectException):

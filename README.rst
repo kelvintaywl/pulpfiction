@@ -45,3 +45,8 @@ Usage
 
 Script exits with `sys.exit(0)` if successful, else the earliest invalid comment is found and raised.
 
+Known Issues
+############
+
+- Commented-out code will be considered non-English; false positive.
+

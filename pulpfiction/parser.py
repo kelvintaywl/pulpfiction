@@ -59,7 +59,11 @@ class File:
                             Token.Comment.Multiline,
                             Token.Comment.Single
                     ):
-                        yield Comment(self.path, value, idx)
+                        text = Comment.extract_text(value)
+                        if not text or Comment.can_ignore(text):
+                            continue
+
+                        yield Comment(self.path, text, idx)
 
             except UnicodeDecodeError:
                 pass
