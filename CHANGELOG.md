@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- README from Markdown to RST format
+
 ## 0.2.0 - 2018-02-28
 ### Fixed
 - issue when langdetect is unable to detect or predict language code
