@@ -33,6 +33,7 @@ setup(
             'flake8>=3.5.0'
         ]
     },
+    python_requires='>=3',
     classifiers=[
         'Intended Audience :: Developers',
         'Programming Language :: Python',
