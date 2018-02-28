@@ -1,5 +1,9 @@
 # Pulp Fiction
 
+<div align="center">
+  <img src="./images/jules.png" width="256" height="256" alt="Jules Winnfield art by icassu">
+</div>
+
 _(English, *****! Do you speak it?)_
 
 A simple tool to detect non-English commments in a code base (directory).
@@ -31,3 +35,6 @@ Options:
 # alternatively,
 $ jules --path=~/personal/my-awesome-git-project
 ```
+
+Script exits with `sys.exit(0)` if successful, else the earliest invalid comment is found and raised.
+
