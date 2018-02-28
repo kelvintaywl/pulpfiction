@@ -1,4 +1,5 @@
 from langdetect import detect_langs
+from langdetect.lang_detect_exception import LangDetectException
 
 from .models import Comment
 
@@ -22,7 +23,8 @@ class Comment:
     def validate(self) -> None:
         try:
             guess = detect_langs(self.comment.text)[0]
-        except IndexError:
+        except (IndexError, LangDetectException):
+            # skip validation since we cannot guess the language code
             return
         else:
             self.language_code_detected = guess.lang

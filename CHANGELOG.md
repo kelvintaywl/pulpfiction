@@ -6,7 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## 0.0.1 - 2018-02-27
+## 0.2.0 - 2018-02-28
+### Fixed
+- issue when langdetect is unable to detect or predict language code
+
+## 0.1.0 - 2018-02-27
 ### Added
 - comment validator to detect non-English comments
 - directory and file parsers to parse files and comments respectively
